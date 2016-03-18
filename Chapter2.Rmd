@@ -1,0 +1,21 @@
+---
+title: "Notes on chapter 2"
+author: "Matthias Grenié"
+date: "18 mars 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Notes on Chapter 2 of *Applied Spatial Data Analysis*
+
+```{r cars}
+summary(cars)
+```
+
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
