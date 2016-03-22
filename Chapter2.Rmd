@@ -11,11 +11,32 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Notes on Chapter 2 of *Applied Spatial Data Analysis*
 
-```{r cars}
-summary(cars)
+```{r}
+library(sp)
+
+# See class definition of S4 class
+getClass("Spatial")
 ```
 
+`SpatialPoints` class useful to add info on spatial points.
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+data(meuse)
+
+meuse_mat = meuse[, c("x", "y")]
+
+meuse_sp = SpatialPoints(meuse_mat)
+
+plot(meuse_sp)
+
+proj4string(meuse_sp) = CRS("+proj=sterea +lat_0=52.15616055555555 +lon_0=5.38763888888889 +k=0.9999079 +x_0=155000 +y_0=463000 +ellps=bessel +units=m +no_defs")
+
+plot(meuse_sp)
+
+meuse_df = SpatialPointsDataFrame(meuse_sp, meuse[, 3:14])
+
+meuse2 = meuse
+coordinates(meuse2[, 3:14]) = c(1, 2)
 ```
+
+`SpatialLines` need `Lines` objects to work.
